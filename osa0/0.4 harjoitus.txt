@@ -1,0 +1,18 @@
+﻿
+Selain->Palvelin: HTTP POST
+Palvelin->Selain: 302 status code (uudelleen ohjaus pyyntö /notes)
+Selain->Palvelin: HTTP GET (/notes)
+Palvelin->Selain: 200 status OK (Palvelin palauttaa HTML koodin rungon)
+note left of Selain: Selain alkaa suorittaa saatua HTML koodia
+Selain->Palvelin: HTTP GET (main.css latauspyyntö) 
+Palvelin->Selain: 200 status OK (main.css sisältö)
+Selain->Palvelin: HTTP GET (main.js latauspyyntö)
+Palvelin->Selain: 200 status OK (main.js sisältö)
+note left of Selain: Selain alkaa suorittaa main.js koodia
+Selain->Palvelin: HTTP GET (data.json latauspyyntö)
+Palvelin->Selain: 200 status OK (listan sisältö JSON muodossa)
+note left of  Selain 
+    Selaimen main.js koodin onreadystate functio päivittää 
+    sivun listan kun this.readyState == 4 && this.status == 200
+end note
+

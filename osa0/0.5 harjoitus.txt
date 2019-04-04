@@ -1,0 +1,18 @@
+﻿Selain->Palvelin: Selain lähettää GET pyynnön https://fullstack-exampleapp.herokuapp.com/spa
+Palvelin->Selain: Palvelin palauttaa html sivun
+note left of Selain: selain suorittaa saamaansa html koodin
+Selain->Palvelin: Selain pyytää main.css sisältöä GET metodin avulla
+Palvelin->Selain: Palvelin palauttaa 200 ja main.css sisällön
+Selain ->Palvelin: Selain pyytää spa.js sisältöä GET metodilla
+Palvelin->Selain: Palvelin palauttaa 200 ja spa.js sisällön
+note left of Selain
+    Selain suorittaa spa.js sisältöä jossa luodaan XMLHtttpRequest
+    objecti joka lähetetään pyyntö data.json lataamiseksi
+end note
+Selain->Palvelin: GET pyyntö data.json lataamiseksi
+Palvelin->Selain: Palvelin palauttaa 200 ja json muotoisen datan
+note left of Selain
+    selain käsittelee saamansa json datan JSON.parse(this.responseText)
+    ja tallentaa sen notes muuttujaan jonka jälkeen redrawNotes funktio
+    tulostaa notes sisällön listana
+end note

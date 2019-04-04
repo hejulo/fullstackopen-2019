@@ -1,0 +1,13 @@
+﻿
+note left of Selain
+Käyttäjä syöttää uuden muistiinpanon, jonka jälkeen muistiinpano luetaan
+ja talletetaan note muuttujaan aikaleiman kanssa. Tämän jälkeen note lisätään
+notes vektoriin ja syötetty muistiinpano tyhjennetään formilta. Tämän jälkeen näytölle 
+kirjoitetaan kaikki muistiipanot redrawNotes funktiota kutsumalla ja uusi note lähetetään 
+palvelimelle sendToServer funktiota kutsumalla
+end note
+Selain->Palvelin: Selain lähettää POST viestillä JSON muodossa sivulle kirjoitetun noten aikaleimamn kera
+Palvelin->Selain: Palvelin lähettää 201 statuksen ja JSON viestin {"message":"note created"}
+note left of Selain
+Selain tulostaa console.log:iin palvelimelta saadun vastauksen
+end note
