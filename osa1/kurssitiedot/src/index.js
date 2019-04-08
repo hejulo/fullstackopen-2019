@@ -19,9 +19,9 @@ const Part = (props) => {
 const Content = (props) => {
     return (
         <div>
-            <Part osa={props.osa1.name} maara={props.osa1.exercises} />
-            <Part osa={props.osa2.name} maara={props.osa2.ecercises} />
-            <Part osa={props.osa3.name} maara={props.osa3.exercises} />
+            <Part osa={props.osat[0].name} maara={props.osat[0].exercises} />
+            <Part osa={props.osat[1].name} maara={props.osat[1].ecercises} />
+            <Part osa={props.osat[2].name} maara={props.osat[2].exercises} />
         </div>
     )
 }
@@ -29,7 +29,7 @@ const Content = (props) => {
 const Total = (props) => {
     return (
         <div>
-            <p>yhteensä {props.yhteensa} tehtävää</p>
+            <p>yhteensä {props.osat[0].exercises + props.osat[1].exercises + props.osat[2].exercises} tehtävää</p>
         </div>
     )
 }
@@ -37,24 +37,26 @@ const Total = (props) => {
 const App = () => {
     const course = 'Half Stack -sovelluskehitys';
 
-    const part1 =  {
+    const parts=  [
+        {
         name: 'Reactin perusteet',
         exercises: 10
-    }
-    const part2 = {
+        },
+        {
         name: 'Tiedonvälitys propseilla',
         exercises: 7
-    }
-    const part3 = {
+        },
+        {
         name: 'Komponenttien tila',
         exercises: 14
-    }
+        }
+]
 
     return (
         <div>
             <Header kurssi={course} />
-            <Content osa1={part1} osa2={part2} osa3={part3} />
-            <Total yhteensa={part1.exercises + part2.exercises + part3.exercises} />
+            <Content osat={parts} />
+            <Total osat={parts} />
         </div>
     )
 }
