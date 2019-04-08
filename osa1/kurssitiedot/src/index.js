@@ -1,32 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-/*
-const App = () => {
-    const course = 'Half Stack -sovelluskehitys'
-    const part1 = 'Reactin perusteet'
-    const exercises1 = 10
-    const part2 = 'Tiedonvälitys propseilla'
-    const exercises2 = 7
-    const part3 = 'Komponenttien tila'
-    const exercises3 = 14
-  
-    return (
-      <div>
-        <h1>{course}</h1>
-        <p>
-          {part1} {exercises1}
-        </p>
-        <p>
-          {part2} {exercises2}
-        </p>
-        <p>
-          {part3} {exercises3}
-        </p>
-        <p>yhteensä {exercises1 + exercises2 + exercises3} tehtävää</p>
-      </div>
-    )
-  }
-*/
 
 const Header = (props) => {
     return (
@@ -46,9 +19,9 @@ const Part = (props) => {
 const Content = (props) => {
     return (
         <div>
-            <Part osa={props.osa1} maara={props.tehtavat1} />
-            <Part osa={props.osa2} maara={props.tehtavat2} />
-            <Part osa={props.osa3} maara={props.tehtavat3} />
+            <Part osa={props.osa1.name} maara={props.osa1.exercises} />
+            <Part osa={props.osa2.name} maara={props.osa2.ecercises} />
+            <Part osa={props.osa3.name} maara={props.osa3.exercises} />
         </div>
     )
 }
@@ -63,19 +36,26 @@ const Total = (props) => {
 
 const App = () => {
     const course = 'Half Stack -sovelluskehitys';
-    const part1 = 'Reactin perusteet';
-    const exercises1 = 10;
-    const part2 = 'Tiedonvälitys propseilla';
-    const exercises2 = 7;
-    const part3 = 'Komponenttien tila';
-    const exercises3 = 14;
+
+    const part1 =  {
+        name: 'Reactin perusteet',
+        exercises: 10
+    }
+    const part2 = {
+        name: 'Tiedonvälitys propseilla',
+        exercises: 7
+    }
+    const part3 = {
+        name: 'Komponenttien tila',
+        exercises: 14
+    }
 
     return (
         <div>
             <Header kurssi={course} />
-            <Content osa1={part1} osa2={part2} osa3={part3} tehtavat1={exercises1} tehtavat2={exercises2} tehtavat3={exercises3} />
-            <Total yhteensa={exercises1 + exercises2 + exercises3} />
-         </div>
+            <Content osa1={part1} osa2={part2} osa3={part3} />
+            <Total yhteensa={part1.exercises + part2.exercises + part3.exercises} />
+        </div>
     )
 }
 
