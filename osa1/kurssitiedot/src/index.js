@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 const Header = (props) => {
     return (
         <div>
-        <h1>{props.kurssi}</h1>
+        <h1>{props.kurssi.name}</h1>
         </div>
     )
 }
@@ -12,6 +12,7 @@ const Header = (props) => {
 const Part = (props) => {
     return (
         <div>
+            {console.log(props.osa + " " + props.maara)}
             <p>{props.osa} {props.maara}</p>
         </div>
     )}
@@ -19,9 +20,10 @@ const Part = (props) => {
 const Content = (props) => {
     return (
         <div>
-            <Part osa={props.osat[0].name} maara={props.osat[0].exercises} />
-            <Part osa={props.osat[1].name} maara={props.osat[1].ecercises} />
-            <Part osa={props.osat[2].name} maara={props.osat[2].exercises} />
+            {console.log(props)}
+            <Part osa={props.kurssi.parts[0].name} maara={props.kurssi.parts[0].exercises} />
+            <Part osa={props.kurssi.parts[1].name} maara={props.kurssi.parts[1].exercises} />
+            <Part osa={props.kurssi.parts[2].name} maara={props.kurssi.parts[2].exercises} />
         </div>
     )
 }
@@ -29,15 +31,15 @@ const Content = (props) => {
 const Total = (props) => {
     return (
         <div>
-            <p>yhteensä {props.osat[0].exercises + props.osat[1].exercises + props.osat[2].exercises} tehtävää</p>
+            <p>yhteensä {props.cource.parts[0].exercises + props.cource.parts[1].exercises + props.cource.parts[2].exercises} tehtävää</p>
         </div>
     )
 }
 
 const App = () => {
-    const course = 'Half Stack -sovelluskehitys';
-
-    const parts=  [
+    const course = {
+        name: 'Half Stack -sovelluskehitys',
+        parts: [
         {
         name: 'Reactin perusteet',
         exercises: 10
@@ -50,17 +52,16 @@ const App = () => {
         name: 'Komponenttien tila',
         exercises: 14
         }
-]
+        ]
+    }
 
     return (
         <div>
             <Header kurssi={course} />
-            <Content osat={parts} />
-            <Total osat={parts} />
+            <Content kurssi={course} />
+            <Total cource={course} />
         </div>
     )
 }
-
-
 
 ReactDOM.render(<App />, document.getElementById('root'));
